@@ -17,7 +17,8 @@ os.chdir(os.path.dirname(sys.argv[0]))
 
 QUOTES_FILE = "quotes.txt"
 ICON_PATH = "icon.ico"
-DURATION = 30
+DURATION = 10
+LENGTH = 50
 quotes_list = []
 
 # Load quotes into list on startup
@@ -27,7 +28,8 @@ def loadQuotes():
         for line in f:
             # Check if line empty
             if line == "\n":
-                quotes_list.append(one_quote)
+                if len(one_quote) <= LENGTH:
+                    quotes_list.append(one_quote)
                 one_quote = ""
             else:
                 one_quote = one_quote + line
